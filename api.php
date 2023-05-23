@@ -5,40 +5,25 @@ $_DATA = json_decode(file_get_contents("php://input"), true);
 $_METHOD = $_SERVER["REQUEST_METHOD"];
 var_dump($_METHOD);
 
-function calcPromedio(float $nota1, float $nota2, float $nota3){
-        $promedio = ($nota1 + $nota2 + $nota3)/3;
-
-        return (array)[
-            "prom"=> $promedio,
-            "mensaje"=> ($promedio >= 3.9) ?"Felicitaciones Aprobo" :"Pailas Reprobo"
-        ];
+function validateNumber(float $number){
+    if(intval($number) == floatval($number)){
+        $calculate = $number%2;
+        return ($calculate == 0) ?"El numero $number es PAR." :"El numero $number es IMPAR.";
+    } else {
+        return "Error!! El dato ingresado es incorrecto";
+    }     
 }
 
 try {
     $res = match($_METHOD){
-        "POST" => calcPromedio(...$_DATA),
+        "POST" => validateNumber(...$_DATA),
         default => <<<STRING
         Methodo "${_METHOD}" imposible de ejecutar, rectifique su methodo
-        STRING,
+        STRING
     };
 } catch (\Throwable $th) {
-    $res = (array)[
-        "prom"=> "Error",
-        "mensaje"=> "Error"
-    ];
+    $res = "Error!! El dato ingresado es incorrecto";
 }
 
-if (is_array($res)){
-    $resuesta = (array) [
-        "message" =>$res["mensaje"],
-        "data" => $_DATA,
-        "promedio" => $res["prom"]
-    ];
-
-    echo json_encode($resuesta, JSON_PRETTY_PRINT);
-} else{
-    echo $res;
-}
-
-
+echo $res;
 ?>
