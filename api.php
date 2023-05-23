@@ -6,50 +6,65 @@ $_DATA = json_decode(file_get_contents("php://input"), true);
 $_METHOD = $_SERVER["REQUEST_METHOD"];
 var_dump($_METHOD);
 
-function cantTotal(float $cantidad, float $precio){
-    return $cantidad * $precio;
+function calcCuadrado($arg){
+    if (is_numeric($arg["valLadoCuadrado"])) {
+        $lado = (float) $arg["valLadoCuadrado"];
+
+        return (array) [
+            "perimetro"=> ($lado * 4)
+        ];
+    }else{
+        return (array) [
+            "perimetro"=> "Error!!"
+        ];
+    }
 }
 
-function factura($arg){
-    if (is_numeric($arg["nomProducto"]) || !is_numeric($arg["preArticulo"]) || !is_numeric($arg["canArticulo"])) {
-        return(array)[
-            "Nombre" => "Error!!",
-            "Cantidad" => "Error!!",
-            "Valor" => "Error!!",
-            "Total" => "Error!!"
+function calcRectangulo($arg){
+    if (is_numeric($arg["baseRectangulo"]) && is_numeric($arg["alturaRectangulo"])) {
+        $base = (float) $arg["baseRectangulo"];
+        $altura = (float) $arg["alturaRectangulo"];
+
+        return (array) [
+            "area"=> ($base * $altura)
         ];
-    }else{ 
-        return(array)[
-            "Nombre" => $arg["nomProducto"],
-            "Cantidad" => $arg["canArticulo"],
-            "Valor" => $arg["preArticulo"],
-            "Total" => cantTotal($arg["canArticulo"],$arg["preArticulo"])
+    } else{
+        return (array) [
+            "area"=> "Error!!"
         ];
-    } 
+    }
+}
+
+function ValidateForm($arg){
+    return ($arg["valLadoCuadrado"]) ?calcCuadrado($arg) :calcRectangulo($arg);
 }
 
 try {
     $res = match($_METHOD){
-        "POST" => factura($_DATA),
+        "POST" => ValidateForm($_DATA),
         default => <<<STRING
         Methodo "${_METHOD}" imposible de ejecutar, rectifique su methodo
         STRING
     };
 } catch (\Throwable $th) {
     $res = (array)[
-        "Nombre" => "Error!!",
-        "Cantidad" => "Error!!",
-        "Valor" => "Error!!",
-        "Total" => "Error!!"
+        "perimetro" => "Error!!",
+        "area" => "Error!!",
     ];
 }
 
+if($res["perimetro"]){
     $respuesta = (array) [
-        "NombreProducto" => $res["Nombre"],
-        "CantidadProducto" => $res["Cantidad"],
-        "ValorProducto" => $res["Valor"],
-        "TotalALlevar" => $res["Total"]
+        "data" => $_DATA,
+        "perimetroCuadrado" => $res["perimetro"]
     ];
+}else{
+    $respuesta = (array) [
+        "data" => $_DATA,
+        "areaRectangulo" => $res["area"]
+    ];
+}
+   
 
     echo json_encode($respuesta, JSON_PRETTY_PRINT);
 ?>

@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 7</title>
+    <title>Ejercicio 8</title>
     <script src="main.js" defer></script>
 </head>
 <body>
-    <!--Programa que pida el ingreso del nombre y precio de un artículo y la
-cantidad que lleva el cliente. Mostrar lo que debe pagar el comprador
-en su factura.-->
+    <!--Programa que Ingrese por teclado:
+a. el valor del lado de un cuadrado para mostrar por pantalla el perímetro del mismo
+b. la base y la altura de un rectángulo para mostrar el área del mismo-->
 <fieldset>
-    <legend>Ejercicio 7</legend>
-    <form id="myForm">
-        <label for="nomProducto">Ingrese el nombre del producto: </label>
-        <input id="nomProducto" type="text" required name="nomProducto"/><br><br>
+    <legend>Cuadrado</legend>
+    <form id="myFormCuadrado">
+        <label for="valLadoCuadrado">Ingrese el valor del lado del cuadrado: </label>
+        <input id="valLadoCuadrado" type="text" required  pattern="[0-9.,]+" name="valLadoCuadrado"/><br><br>
+        
+        <input id="submit" type="submit" value="Enviar">
+    </form>
+</fieldset>
 
-        <label for="preArticulo">Ingrese el precio del producto: </label>
-        <input id="preArticulo" type="text" required pattern="[0-9.,]+" name="preArticulo"/><br><br>
+<fieldset>
+    <legend>Rectangulo</legend>
+    <form id="myFormRectangulo">
+        <label for="baseRectangulo">Ingrese la base del rectangulo: </label>
+        <input id="baseRectangulo" type="text" required pattern="[0-9.,]+" name="baseRectangulo"/><br><br>
 
-        <label for="canArticulo">Ingrese la cantidad del producto: </label>
-        <input id="canArticulo" type="number" required name="canArticulo"/><br><br>
+        <label for="alturaRectangulo">Ingrese la altura del rectangulo: </label>
+        <input id="alturaRectangulo" type="text" required pattern="[0-9.,]+" name="alturaRectangulo"/><br><br>
         
         <input id="submit" type="submit" value="Enviar">
     </form>
