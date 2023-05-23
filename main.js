@@ -1,4 +1,5 @@
-//Dado un número indicar si es par o impar y si es mayor de 10.
+//Construir el algoritmo para determinar el voltaje de un
+//circuito a partir de la resistencia y la intensidad de corriente.
 
 let myForm = document.querySelector("#myForm");
 myForm.addEventListener("submit", async (e) => {

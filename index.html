@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 2</title>
+    <title>Ejercicio 3</title>
     <script src="main.js" defer></script>
 </head>
 <body>
-    <!-- Dado un número indicar si es par o impar y si es mayor de 10. -->
+    <!--Construir el algoritmo para determinar el voltaje de un
+circuito a partir de la resistencia y la intensidad de corriente. -->
 <fieldset>
-    <legend>Ejercicio 2</legend>
+    <legend>Ejercicio 3</legend>
     <form id="myForm">
-        <label for="number">Ingrese numero a validar:</label>
-        <input id="number" type="text" required pattern="[0-9]+" name="number" placeholder="Numero" /><br><br>
+        <label for="resistencia">Ingrese la RESISTENCIA de la corriente:</label>
+        <input id="resistencia" type="text" required pattern="[0-9,.]+" name="resistencia" placeholder="Resistencia" /><br><br>
+        <label for="intencidad">Ingrese la INTENCIDAD de la corriente:</label>
+        <input id="intencidad" type="text" required pattern="[0-9,.]+" name="intencidad" placeholder="Intencidad" /><br><br>
         <input type="submit" value="Enviar">
     </form>
 </fieldset>
