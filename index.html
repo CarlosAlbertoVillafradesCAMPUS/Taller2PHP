@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 5</title>
+    <title>Ejercicio 7</title>
     <script src="main.js" defer></script>
 </head>
 <body>
-    <!--Construir el algoritmo en Javascript para un programa
-para cualquier cantidad de estudiantes que lea el nombre,
-el sexo y la nota definitiva y halle al estudiante con la mayor
-nota y al estudiante con la menor nota y cuantos eran
-hombres y cuantos mujeres.-->
+    <!--Programa que pida el ingreso del nombre y precio de un artículo y la
+cantidad que lleva el cliente. Mostrar lo que debe pagar el comprador
+en su factura.-->
 <fieldset>
-    <legend>Ejercicio 5</legend>
+    <legend>Ejercicio 7</legend>
     <form id="myForm">
-        <label for="numero1">Ingrese el numero de estudiantes: </label>
-        <input id="numeroTotal" type="text" name="numeroTotal" placeholder="Cantidad de estuantes"/><br>
+        <label for="nomProducto">Ingrese el nombre del producto: </label>
+        <input id="nomProducto" type="text" required name="nomProducto"/><br><br>
+
+        <label for="preArticulo">Ingrese el precio del producto: </label>
+        <input id="preArticulo" type="text" required pattern="[0-9.,]+" name="preArticulo"/><br><br>
+
+        <label for="canArticulo">Ingrese la cantidad del producto: </label>
+        <input id="canArticulo" type="number" required name="canArticulo"/><br><br>
         
         <input id="submit" type="submit" value="Enviar">
     </form>
