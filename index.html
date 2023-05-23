@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 3</title>
+    <title>Ejercicio 4</title>
     <script src="main.js" defer></script>
 </head>
 <body>
-    <!--Construir el algoritmo para determinar el voltaje de un
-circuito a partir de la resistencia y la intensidad de corriente. -->
+    <!--Construir el algoritmo que solicite el nombre y edad de 3
+personas y determine el nombre de la persona con mayor edad. -->
 <fieldset>
-    <legend>Ejercicio 3</legend>
+    <legend>Ejercicio 4</legend>
     <form id="myForm">
-        <label for="resistencia">Ingrese la RESISTENCIA de la corriente:</label>
-        <input id="resistencia" type="text" required pattern="[0-9,.]+" name="resistencia" placeholder="Resistencia" /><br><br>
-        <label for="intencidad">Ingrese la INTENCIDAD de la corriente:</label>
-        <input id="intencidad" type="text" required pattern="[0-9,.]+" name="intencidad" placeholder="Intencidad" /><br><br>
-        <input type="submit" value="Enviar">
+        <label for="nombre">Ingrese el nombre de la persona:</label>
+        <input id="nombre" type="text" required pattern="[A-Za-z]+" name="nombre" placeholder="Nombre"/><br>
+        <label for="edad">Ingrese la edad:</label>
+        <input id="edad" type="text" required pattern="[0-9]+" name="edad" placeholder="Edad"/><br><br>
+        <input id="submit" type="submit" value="Guardar persona">
+        <input id="btnContinuar" type="button" value="Continuar" disabled>
     </form>
 </fieldset>
 <pre>
