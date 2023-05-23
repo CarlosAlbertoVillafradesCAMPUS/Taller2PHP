@@ -7,20 +7,23 @@ let data = [];
 myForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const dataForm = Object.fromEntries(new FormData(e.target));
-    if(data.length <= 2){
-        data.unshift(dataForm);
-        alert(dataForm.nombre + " agregado con exito");
-        document.querySelector("#btnContinuar").removeAttribute("disabled");
-        myForm.reset();
-        if(data.length == 3){
-            document.querySelector("#submit").setAttribute("disabled","");
-        }     
+    if(dataForm.nombre == "" || dataForm.edad == ""){
+        alert("Error!! Porfavor llenar los campos");
     }else{
-        alert("Ya haz agregado las 3 personas");
-        document.querySelector("#submit").setAttribute("disabled","");
-        myForm.reset();
+        if(data.length <= 2){
+            data.push(dataForm);
+            alert(dataForm.nombre + " agregado con exito");
+            document.querySelector("#btnContinuar").removeAttribute("disabled");
+            myForm.reset();
+            if(data.length == 3){
+                document.querySelector("#submit").setAttribute("disabled","");
+            }     
+        }else{
+            alert("Ya haz agregado las 3 personas");
+            document.querySelector("#submit").setAttribute("disabled","");
+            myForm.reset();
+        }
     }
-    
 });
 
 document.querySelector("#btnContinuar").addEventListener("click", async(e) => {

@@ -7,22 +7,22 @@ var_dump($_METHOD);
 
 function calcMayor($arg){
     if(count($arg) > 0 && count($arg) <= 3){
-        $position = (int) 0;
-        $sum = (int) 0;
         $i = (int) 0;
-        foreach($arg as $key) {
-            if (!is_numeric($key["edad"])) {
+        $sum = (int) 0;
+        for ($i=0; $i < count($arg); $i++) { 
+            if (!is_numeric($arg[$i]["edad"])) {
                 return "Error!!";
                 break;
                 }
-            $edad = (int) $key["edad"];
+            $edad = (int) $arg[$i]["edad"];
             if ($edad >= $sum) {
-                $sum = $edad;
-                $position = $i;
-                $i++;
-            }
-            return $arg[$position];
+                    $sum = (int) $arg[$i]["edad"];
+                    $position = $i;
+                }
         }
+
+        return $arg[$position];
+
 } else{
     return "Error!!";
 }
